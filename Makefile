@@ -10,17 +10,17 @@ IMAGE_NAME=my-react-app
 
 # Create the Docker container
 create:
-    @docker rm -f $(CONTAINER_NAME) || true
-    @docker build -t $(IMAGE_NAME) .
-    @docker create -p 80:80 --name $(CONTAINER_NAME) $(IMAGE_NAME)
+	@docker rm -f $(CONTAINER_NAME) || true
+	@docker build -t $(IMAGE_NAME) .
+	@docker create -p 80:80 --name $(CONTAINER_NAME) $(IMAGE_NAME)
 
 # Stop the Docker container
 stop:
-    @docker stop $(CONTAINER_NAME) || true
+	@docker stop $(CONTAINER_NAME) || true
 
 # Start the Docker container
 start:
-    @docker start $(CONTAINER_NAME) || (make create && docker start $(CONTAINER_NAME))
+	@docker start $(CONTAINER_NAME) || (make create && docker start $(CONTAINER_NAME))
 
 # Restart the Docker container
 restart: stop start
